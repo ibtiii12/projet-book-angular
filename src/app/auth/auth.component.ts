@@ -13,20 +13,20 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.authStatus = this.authService.isAuth;
+    this.authStatus = this.authService.isAuth; // 
   }
 
-  onSignIn() {
+  onSignIn() {  // fonction responsable de l'inscription
     this.authService.signIn().then(
       () => {
-        console.log('Sign in successful!');
         this.authStatus = this.authService.isAuth;
-        this.router.navigate(['appareils']);
-      }
+        console.log('Sign in successful!'); // afficher 'sign in succesful' apres s'inscrire.        
+        this.router.navigate(['appareils']);  // apres sign in , changer le route vers la liste des appareils.
+       }
     );
 }
 
-  onSignOut() {
+  onSignOut() { // fonction  responsable de  logout apres l'inscription.
     this.authService.signOut();
     this.authStatus = this.authService.isAuth;
   }

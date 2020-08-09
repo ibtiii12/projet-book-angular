@@ -12,7 +12,7 @@ export class AppareilViewComponent implements OnInit {
   appareils: any[];
 
   lastUpdate = new Date();
-  constructor(private appareilService: AppareilService) {
+  constructor(private appareilService: AppareilService) { // apres 4000ms de l'affichage de la liste des appareils , le bouton submit va s'apparaitre.
     setTimeout(
       () => {
         this.isAuth = true;
@@ -21,15 +21,15 @@ export class AppareilViewComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.appareils = this.appareilService.appareils;
+    this.appareils = this.appareilService.appareils; // afficher la liste des appareils.
   
   }
 
   onAllumer() {
-    this.appareilService.switchOnAll();
+    this.appareilService.switchOnAll(); // allumer l'appareil speciphique.
 }
 onEteindre() {
-  if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
+  if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) { // eteindre l'appareil specifique.
     this.appareilService.switchOffAll();
   } else {
     return null;

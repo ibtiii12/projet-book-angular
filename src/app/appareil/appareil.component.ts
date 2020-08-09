@@ -8,23 +8,23 @@ import { AppareilService } from '../services/appareil.service';
 })
 export class AppareilComponent implements OnInit {
 
-  @Input() appareilName: string;
+  @Input() appareilName: string; 
   @Input() appareilStatus: string;
   @Input() index: number;
   @Input() id: number;
 
   constructor(private appareilService: AppareilService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {        
   }
 
   getStatus() {
-    return this.appareilStatus;
+    return this.appareilStatus; 
   }
 
-  getColor() {
-    if(this.appareilStatus === 'allumé') {
-      return 'green';
+  getColor() {   
+  return 'green';
+    if(this.appareilStatus === 'allumé') {    // retourner la situation de l'appareil si allumee alors afficher couleur vert sinon rouge.
     } else if(this.appareilStatus === 'éteint') {
       return 'red';
     }
@@ -32,7 +32,7 @@ export class AppareilComponent implements OnInit {
     
 onSwitch() {
   if(this.appareilStatus === 'allumé') {
-    this.appareilService.switchOffOne(this.index);
+    this.appareilService.switchOffOne(this.index); // si allumee alors bouton on sinon bouton off
   } else if(this.appareilStatus === 'éteint') {
     this.appareilService.switchOnOne(this.index);
   }
